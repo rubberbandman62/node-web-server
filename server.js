@@ -31,13 +31,6 @@ hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 });
 
-app.get('/hello', (request, response) => {
-    response.send(`
-<h1>Hello Express!</h1>
-<p> How are you?</p>
-`)
-});
-
 app.get('/', (request, response) => {
     response.render('home.hbs', {
         pageTitle: 'Home Page',
@@ -57,6 +50,16 @@ app.get('/about', (request, response) => {
         currentYear: new Date().getFullYear(),
         company: 'IKS GmbH'
     });
+})
+
+app.get('/projects', (request, response) => {
+    response.render('projects.hbs', {
+        pageTitle: 'Project Page',
+        company: 'IKS GmbH',
+        currentYear: new Date().getFullYear(),
+        githubUser: 'rubberbandman62',
+        projectsUrl: 'https://github.com/rubberbandman62?tab=repositories'
+    })
 })
 
 app.get('/bad', (request, response) => {
